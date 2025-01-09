@@ -10,50 +10,69 @@
 
 <body>
     <header>
-        <h1>We Cook It</h1>
-        <h2>Créez vos propres recettes plus délicieuses les unes que les autres !</h2>
+        <div>
+            <img src="assets/images/menu-logo.svg" alt="menu-logo" class="menu-logo">
+        </div>
+        <div class="logo-titre-container">
+            <div>
+                <img src="assets/images/logo.svg" alt="logo" class="logo-container">
+            </div>
+            <h1>We Cook It</h1>
+        </div>
     </header>
     <main>
-        <form action="#" id="recipeContainer">
+        <section id="recetteList">
+            <h2>Liste de mes recettes</h2>
+            <div id="recetteContainer">
+                
+            </div>
+        </section>
+        <section>
+            <h2>Créez vos propres recettes plus délicieuses les unes que les autres !</h2>
 
-            <!-- Titre de la recette -->
-            <p>Ajoutez le titre de votre recette</p>
-            <label for="titleContainer"></label>
-            <input type="text" id="titleContainer">
+            <form action="#" id="recipeContainer">
 
-            <!-- Ingrédients de la recette -->
-            <p>Ajoutez les ingrédients de votre recette</p>
-            <label for="ingredientsContainer"></label>
-            <input type="text" id="ingredientsContainer">
+                <!-- Titre de la recette -->
+                <p>Ajoutez le titre de votre recette</p>
+                <label for="titleContainer"></label>
+                <input type="text" id="titleContainer">
 
-            <!-- instructions de la recette -->
-            <p>Ajoutez les instructions de votre recette</p>
-            <label for="instructsContainer"></label>
-            <input type="text" id="instructsContainer">
+                <!-- Ingrédients de la recette -->
+                <p>Ajoutez les ingrédients de votre recette</p>
+                <label for="ingredientsContainer"></label>
+                <input type="text" id="ingredientsContainer">
 
-            <!-- temps de préparation de la recette -->
-            <p>Ajoutez le temps de préparation de votre recette</p>
-            <label for="timecookContainer"></label>
-            <input type="number" id="timecookContainer">
+                <!-- instructions de la recette -->
+                <p>Ajoutez les instructions de votre recette</p>
+                <label for="instructsContainer"></label>
+                <input type="text" id="instructsContainer">
 
-            <!-- temps de cuisson de la recette -->
-            <p>Ajoutez le temps de cuisson de votre recette</p>
-            <label for="timefiringContainer"></label>
-            <input type="number" id="timefiringContainer">
+                <!-- temps de préparation de la recette -->
+                <p>Ajoutez le temps de préparation de votre recette</p>
+                <label for="timecookContainer"></label>
+                <input type="number" id="timecookContainer">
 
-            <!-- taux de difficulté la recette -->
-            <p>Ajoutez le taux de difficulté de votre recette</p>
-            <label for="difficultyContainer"></label>
-            <input type="text" id="difficultyContainer">
+                <!-- temps de cuisson de la recette -->
+                <p>Ajoutez le temps de cuisson de votre recette</p>
+                <label for="timefiringContainer"></label>
+                <input type="number" id="timefiringContainer">
 
-            <!-- catégorie de la recette -->
-            <p>Ajoutez la catégorie de votre recette</p>
-            <label for="categoryContainer"></label>
-            <input type="text" id="categoryContainer">
+                <!-- taux de difficulté la recette -->
+                <p>Ajoutez le taux de difficulté de votre recette</p>
+                <label for="difficultyContainer"></label>
+                <input type="text" id="difficultyContainer">
 
-            <button type="submit" id="submitButton">Enregistrer</button>
+                <!-- catégorie de la recette -->
+                <p>Ajoutez la catégorie de votre recette</p>
+                <label for="categoryContainer"></label>
+                <input type="text" id="categoryContainer">
 
-        </form>
+                <button type="submit" id="submitButton">Enregistrer</button>
+
+
+
+            </form>
+        </section>
     </main>
     <footer></footer>
     <script src="assets/javascript/main.js"></script>
