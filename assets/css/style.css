@@ -45,3 +45,7 @@ header {
 main {
     margin: 30px;
 }
+
+.hidden {
+    display: none;
+}

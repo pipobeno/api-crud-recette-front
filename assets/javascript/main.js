@@ -1,7 +1,7 @@
 const recetteList = document.querySelector("#recetteContainer")
 
 
-let submitButton = document.querySelector("#submitButton")
+let submitButtons = document.querySelector("#submitButtons")
 
 
 async function getRecipes() {
@@ -23,24 +23,25 @@ async function getRecipes() {
     }
 }
 
+getRecipes();
 
 async function DISPLAYrecipe() {
     const recipes = await getRecipes()
 
     recipes.forEach((recipe) => {
         console.log(recipe);
-        
+
         const recettes = document.createElement("article");
         recetteList.appendChild(recettes)
         const title = document.createElement('h3')
         title.textContent = recipe.title
         recettes.appendChild(title)
         const listIng = document.createElement('ul')
-        recipe.ingredients.forEach(ing =>{
+        recipe.ingredients.forEach(ing => {
             const listItem = document.createElement('li')
             listItem.textContent = ing
             listIng.appendChild(listItem)
-        }) 
+        })
         recettes.appendChild(listIng)
         const instructs = document.createElement('p')
         instructs.textContent = recipe.instructs
@@ -67,12 +68,23 @@ async function DISPLAYrecipe() {
 
         recettes.appendChild(resetButton)
 
+
         resetButton.addEventListener("click", () => {
-            deleteRecipe()
-            recettes.remove();
-        }
-        
-        );
+            deleteRecipe(recipe._id, recettes)
+
+        });
+
+
+        const modifyButton = document.createElement("button");
+        modifyButton.textContent = "Modifier";
+        recettes.appendChild(modifyButton);
+        modifyButton.addEventListener("click", () => {
+            
+            submitModifyButton.classList.remove("hidden")
+            submitButtons.classList.add("hidden")
+           
+            modifyRecipe(recipe);
+        });
 
         // .innerHTML = `
         // <p>${recipe.title}</p>
@@ -83,7 +95,7 @@ async function DISPLAYrecipe() {
         // <p>${recipe.difficulty}</p>
         // <p>${recipe.category}</p>`
         // console.log(recettes);
-        
+
     });
 }
 
@@ -114,12 +126,17 @@ async function searchRecipes() {
         body: JSON.stringify(dataSearch)
     })
     const data = await response.json()
-   
+console.log(dataSearch);
+
+    console.log('ahouté avec succès');
+    
 }
 
 
 recipeContainer.addEventListener("submit", (e) => {
     e.preventDefault()
+    console.log('test');
+    
     searchRecipes()
 }
 )
@@ -127,8 +144,8 @@ recipeContainer.addEventListener("submit", (e) => {
 
 
 
-async function deleteRecipe() {
-    const response = await fetch("http://localhost:8000/recipes", {
+async function deleteRecipe(id, element) {
+    const response = await fetch("http://localhost:8000/recipes/" + id, {
         method: "DELETE",
         headers: {
             authorization: "Bearer ",
@@ -136,5 +153,21 @@ async function deleteRecipe() {
         },
     });
 
-    const data = await response.json();
+    if (response.ok) {
+        element.remove();
+    }
+}
+
+async function modifyRecipe(recipe) {
+    // submitModifyButton 
+
+    document.querySelector("#titleContainer").value = recipe.title;
+    document.querySelector("#ingredientsContainer").value = recipe.ingredients;
+    document.querySelector("#instructsContainer").value = recipe.instructs;
+    document.querySelector("#timecookContainer").value = recipe.timecook;
+    document.querySelector("#timefiringContainer").value = recipe.timefiring;
+    document.querySelector("#difficultyContainer").value = recipe.difficulty;
+    document.querySelector("#categoryContainer").value = recipe.category;
+
+
 }
